@@ -1,19 +1,23 @@
-import { Metadata } from "next";
-import { Login } from "@/components/Login";
+import { Metadata } from 'next'
+import { getServerSession } from 'next-auth/next'
+import { redirect } from 'next/navigation'
+import { auth } from '@/lib/auth'
 
-export const metadata: Metadata  = {
-  title: 'Login',
-  description: 'Área de login'
+export const metadata: Metadata = {
+  title: 'Home',
+  description: '',
 }
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-center py-24 px-4">
-      <h1 className="text-4xl md:text-6xl font-bold text-center mb-6">
-        Olá, bem vindo(a)
-      </h1>
+export default async function Home() {
+  const session = await getServerSession(auth)
 
-      <Login />
+  if (!session) {
+    redirect('/login')
+  }
+
+  return (
+    <main className="">
+      Home
     </main>
   )
 }
