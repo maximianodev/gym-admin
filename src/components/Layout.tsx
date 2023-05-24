@@ -1,16 +1,11 @@
-import { Footer } from './Footer'
 import { Header } from './Header'
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className='bg-[url("/images/bg.jpg")] bg-cover bg-no-repeat bg-center bg-fixed min-h-screen'>
+    <div className="min-h-screen container mx-auto px-4 md:px-8">
       <Header />
 
-      <div className="p-2">
-        <div className="p-2 bg-[#ffffffcf] rounded-lg backdrop-blur-sm">{children}</div>
-      </div>
-
-      <Footer />
+      {children}
     </div>
   )
 }
